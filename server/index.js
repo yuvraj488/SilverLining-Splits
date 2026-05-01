@@ -11,6 +11,8 @@ const app = express();
 const isProduction = process.env.NODE_ENV === 'production';
 const corsOrigin = process.env.BASE_URL || true;
 
+app.set('trust proxy', 1);
+
 const dbReady = connectDB();
 
 app.use(cors({ origin: isProduction ? corsOrigin : true, credentials: true }));
