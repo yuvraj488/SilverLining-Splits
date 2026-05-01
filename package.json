@@ -1,0 +1,28 @@
+{
+  "name": "silverlining-splits",
+  "version": "1.0.0",
+  "description": "A polished minimal expense-splitting app for groups, trips, and households.",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js",
+    "check": "node --check server/index.js && node --check server/routes/auth.js && node --check server/routes/groups.js && node --check server/routes/expenses.js && node --check public/js/api.js && node --check public/js/auth.js && node --check public/js/dashboard.js && node --check public/js/group.js && node --check public/js/join.js && node --check public/js/settings.js && node --check public/js/ui.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.0",
+    "nodemailer": "^8.0.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  }
+}

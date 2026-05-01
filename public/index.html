@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in · SilverLining-Splits</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="auth-layout">
+    <section class="auth-brand">
+      <div class="auth-brand-inner">
+        <div class="auth-logo">✦</div>
+        <h1 class="auth-title">SilverLining-<br>Splits</h1>
+        <div class="gold-line"></div>
+        <p class="auth-tagline">"Yuvraj owes no one."</p>
+      </div>
+    </section>
+    <main class="auth-panel">
+      <section class="auth-card">
+        <div class="auth-logo">✦</div>
+        <h2 class="auth-heading">Sign in</h2>
+        <p class="auth-sub">Settle what matters. Leave the noise.</p>
+        <form class="auth-form" id="loginForm" novalidate>
+          <label class="input-group">
+            <span class="input-label">Email</span>
+            <input class="input" id="email" type="email" autocomplete="email" required>
+            <span class="input-error" id="emailError"></span>
+          </label>
+          <label class="input-group">
+            <span class="input-label">Password</span>
+            <input class="input" id="password" type="password" autocomplete="current-password" required>
+            <span class="input-error" id="passwordError"></span>
+          </label>
+          <button class="btn btn-primary btn-full" id="loginBtn" type="submit">Sign in</button>
+        </form>
+        <p class="auth-foot">Don't have an account? <a class="auth-link" href="/signup.html">Create one</a></p>
+      </section>
+    </main>
+  </div>
+  <script src="/js/api.js"></script>
+  <script src="/js/ui.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>
