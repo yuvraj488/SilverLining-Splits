@@ -11,22 +11,33 @@ const app = express();
 const isProduction = process.env.NODE_ENV === 'production';
 const corsOrigin = process.env.BASE_URL || true;
 
-connectDB();
+const dbReady = connectDB();
 
 app.use(cors({ origin: isProduction ? corsOrigin : true, credentials: true }));
 app.use(express.json({ limit: '1mb' }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.use('/api', (req, res, next) => {
+app.use('/api', async (req, res, next) => {
   if (!process.env.MONGO_URI) {
     return res.status(503).json({
       message: 'MongoDB is not configured. Create a .env file with MONGO_URI, then restart the server.'
     });
   }
+
   if (mongoose.connection.readyState !== 1) {
-    return res.status(503).json({ message: 'MongoDB is still connecting. Try again in a moment.' });
+    await Promise.race([
+      dbReady,
+      new Promise((resolve) => setTimeout(resolve, 10000))
+    ]);
   }
+
+  if (mongoose.connection.readyState !== 1) {
+    return res.status(503).json({
+      message: 'MongoDB is still connecting. Try again in a moment. If this persists, check the MongoDB Atlas Network Access settings.'
+    });
+  }
+
   next();
 });
 
